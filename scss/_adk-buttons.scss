@@ -33,6 +33,12 @@
    icon: $font-size-m,
  );
 
+// Architizer Button Palette
+$adk-custom-button-palette: (
+  black-button: black,
+  white-button: white,
+);
+
  $adk-button-padding: $space-s $space;
  $adk-button-margin: 0;
  $adk-button-fill: solid;
@@ -41,7 +47,7 @@
  $adk-button-color: $white;
  $adk-button-color-alt: $dark-gray;
  $adk-button-radius: $global-radius;
- $adk-button-palette: $foundation-palette;
+ $adk-button-palette: map-merge($foundation-palette, $adk-custom-button-palette);
  $adk-button-opacity-disabled: 0.25;
  $adk-button-background-hover-lightness: -10%;
  $adk-button-hollow-hover-lightness: -50%;
@@ -55,6 +61,8 @@
    success: $adk-button-color,
    warning: $adk-button-color,
    alert: $adk-button-color,
+   black-button: $adk-button-color,
+   white-button: $adk-button-color-alt,
  );
 
 // TODO: Document button-base() mixin
@@ -115,6 +123,7 @@
   &:hover, &:focus {
     color: map-get($adk-button-font-colors, $name);
     background-color: $background-hover;
+    border-color: transparent;
   }
 }
 
@@ -243,7 +252,6 @@
     @include adk-button-hollow;
     @include adk-button-hollow-style($background);
   }
-
   @if $expand {
     @include adk-button-expand;
   }
@@ -277,6 +285,9 @@
         }
         &.#{$name}-light {
           @include adk-button-style(rgba($color, 0.25), $color, $color, $name: $name);
+        }
+        &.#{$name}-transparent {
+          @include adk-button-style(rgba($color, 0.65), rgba($color, 0.95), $color, $name: $name);
         }
       }
       @else {

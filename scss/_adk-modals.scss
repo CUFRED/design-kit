@@ -31,7 +31,7 @@
   }
 
   .header {
-    @include full-width-border(bottom)
+    @include full-width-border(bottom);
 
     // Allows for the header to span the full width of parent
     width: auto;
@@ -78,4 +78,18 @@
 // Close button styles
 .close-button {
   cursor: pointer;
+}
+
+// React Modal Global Override
+// Disable background scrolling when a React modal is active
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModalPortal {
+  .ReactModal__Overlay {
+    .ReactModal__Content {
+
+    }
+  }
 }

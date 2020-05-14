@@ -1,0 +1,22 @@
+/**
+ * Utility classes for common border-raduis usage
+ */
+.rounded {
+  border-radius: 50%;
+}
+
+@each $size, $value in $border-radius-sizes {
+  &.br-#{$size} {
+    border-radius: $value !important;
+  }
+}
+
+/**
+ * Utility classes for common cursor properties
+ */
+ $cursors: 'none', 'not-allowed', 'pointer', 'help', 'wait', 'crosshair';
+ @each $cursor in $cursors {
+  .cursor-#{$cursor} {
+    cursor: $cursor !important;
+  }
+}

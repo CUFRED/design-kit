@@ -106,6 +106,17 @@ $header-styles: (
   ),
 );
 
+$border-radius-sizes: (
+  0: 0,
+  xs: 1px,
+  s: 2px,
+  base: 4px,
+  m: 6px,
+  l: 8px,
+  xl: 10px,
+  max: 99rem,
+);
+
 /**
  * CSS Grid Variables
  */

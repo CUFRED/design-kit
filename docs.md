@@ -91,6 +91,63 @@ Using this framework is easy. Here's how your code will look when you use a seri
 
 ---
 
+## Gutters
+- Use `gutter-<size>` class with flex grid's `row`, `column`, `columns` classes or with x-grid's `grid-padding-x` or `cell` classes to get custom gutter.
+- Use `small-gutter-<size>` class with the same classes to get custom gutter on small screens.
+
+### Flex Grid
+<div class="row bg-quicksilver-50 display gutter-0">
+  <div class="columns">gutter-0</div><div class="columns">gutter-0</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-micro">
+  <div class="columns">gutter-micro</div><div class="columns">gutter-micro</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xxxs">
+  <div class="columns">gutter-xxxs</div><div class="columns">gutter-xxxs</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xxs">
+  <div class="columns">gutter-xxs</div><div class="columns">gutter-xxs</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xs">
+  <div class="columns">gutter-xs</div><div class="columns">gutter-xs</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-s">
+  <div class="columns">gutter-s</div><div class="columns">gutter-s</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-base">
+  <div class="columns">gutter-base</div><div class="columns">gutter-base</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-m">
+  <div class="columns">gutter-m</div><div class="columns">gutter-m</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-l">
+  <div class="columns">gutter-l</div><div class="columns">gutter-l</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xl">
+  <div class="columns">gutter-xl</div><div class="columns">gutter-xl</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xxl">
+  <div class="columns">gutter-xxl</div><div class="columns">gutter-xxl</div>
+</div>
+<div class="row bg-quicksilver-50 display gutter-xxxl">
+  <div class="columns">gutter-xxxl</div><div class="columns">gutter-xxxl</div>
+</div>
+
+### X-Grid
+<div class="grid-x grid-padding-x gutter-xxxl bg-quicksilver-50">
+  <div class="cell auto" style="border: solid 1px #c6d1d9;">gutter-xxxl</div>
+  <div class="cell auto" style="border: solid 1px #c6d1d9;">gutter-xxxl</div>
+</div>
+
+
+### Small Rules
+<div class="row bg-quicksilver-50 display gutter-xxxl small-gutter-0">
+  <div class="columns">Medium and up: gutter-xxxl<br /> Small: small-gutter-0</div>
+  <div class="columns">Medium and up: gutter-xxxl<br /> Small: small-gutter-0</div>
+</div>
+
+---
+
 ## Useful links
 
 * [Block Grids](http://foundation.zurb.com/sites/docs/flex-grid.html#block-grids)  
@@ -396,11 +453,12 @@ The text must be contained inside an element with a defined width, like a `.colu
 
 Foundation comes the following classes for button colors:
 
-<div class="row small-up-2 medium-up-5">
+<div class="row small-up-2 medium-up-7">
   <!-- .primary -->
   <div class="columns">
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded primary button">.primary</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded primary-light button">.primary-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded primary-transparent button">.primary-transparent</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled primary button">.primary .disabled</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow primary button">.primary .hollow</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled primary button">.primary .hollow .disabled</a></div></div>
@@ -409,6 +467,7 @@ Foundation comes the following classes for button colors:
   <div class="columns">
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded secondary button">.secondary</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded secondary-light button">.secondary-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded secondary-transparent button">.secondary-transparent</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled secondary button">.secondary .disabled</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow secondary button">.secondary .hollow</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled secondary button">.secondary .hollow .disabled</a></div></div>
@@ -417,6 +476,7 @@ Foundation comes the following classes for button colors:
   <div class="columns">
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded alert button">.alert</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded alert-light button">.alert-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded alert-transparent button">.alert-transparent</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled alert button">.alert .disabled</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow alert button">.alert .hollow</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled alert button">.alert .hollow .disabled</a></div></div>
@@ -425,6 +485,7 @@ Foundation comes the following classes for button colors:
   <div class="columns">
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded warning button">.warning</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded warning-light button">.warning-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded warning-transparent button">.warning-transparent</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled warning button">.warning .disabled</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow warning button">.warning .hollow</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled warning button">.warning .hollow .disabled</a></div></div>
@@ -433,9 +494,28 @@ Foundation comes the following classes for button colors:
   <div class="columns">
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded success button">.success</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded success-light button">.success-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded success-transparent button">.success-transparent</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled success button">.success .disabled</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow success button">.success .hollow</a></div></div>
     <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled success button">.success .hollow .disabled</a></div></div>
+  </div>
+  <!-- .black-button -->
+  <div class="columns">
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded black-button button">.black-button</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded black-button-light button">.black-button-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded black-button-transparent button">.black-button-transparent</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled black-button button">.black-button .disabled</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow black-button button">.black-button .hollow</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled black-button button">.black-button .hollow .disabled</a></div></div>
+  </div>
+  <!-- .white-button -->
+  <div class="columns bg-gray-900">
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded white-button button">.white</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded white-button-light button">.white-light</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded white-button-transparent button">.white-transparent</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded disabled white-button button">.white .disabled</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow white-button button">.white .hollow</a></div></div>
+    <div class="row mb-s"><div class="columns"><a href="#" class="expanded hollow disabled white-button button">.white .hollow .disabled</a></div></div>
   </div>
 </div>
 
@@ -1047,6 +1127,38 @@ The examples below are the main image-based card types on Architizer.
       </div>
     </div>
   </div>
+  <div class="columns small-4">
+    <!-- Card 6 - Card with Top and Bottom Control -->
+    <div class="card responsive-image">
+      <!-- Card Image -->
+      <div class="img-standard image-overlay-info" style="background-image: url('https://architizer-prod.imgix.net/media/1498657209559-duchateau_chateau_02.png?auto=format,compress&amp;cs=strip&amp;fit=crop&amp;q=60&amp;w=520');">
+        <!-- Overlay -->
+        <div class="overlay"></div>
+        <div class="info p-0">
+          <div class="row align-middle collapse">
+            <div class="column">
+              <!-- Top Control -->
+              <div class="control top p-s">
+                <div class="grid-x align-center">
+                  <div class="cell shrink">
+                    <button class="button tiny dark dark-transparent rounded-max pl-xs pr-xs">
+                      <i class="material-icons">playlist_add</i> Collect
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Bottom Control -->
+              <div class="control bottom p-s">
+                <div class="grid-x align-center">
+                  <button class="button tiny dark dark-transparent rounded-max pl-xs pr-xs">View</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 ```
@@ -1516,6 +1628,147 @@ Refer to the code below to structure a modal or start with the modal template in
 </div>
 ```
 
+---
+
+
+
+# Utilities
+Utilities are helper classes created to expose some rules properties and common values.
+
+## Display
+- Use `display-inline-block` or `inline-block` classes to get an inline-block display.
+- Use `block` class to get a block display. 
+
+---
+
+## Positions
+- Use `p-a` class to get an absolute position.
+- Use `p-r` class to get a relative position.
+- Use `p-f` class to get a fixed position.
+
+---
+
+## Width and Height
+- Use `full-width` class to get 100% width.
+- Use `full-height` class to get 100% height.
+
+---
+
+## Overflow
+- Use `of-<value>` class to get a hidden overflow.
+- Can be applied on individual axises using `of-x-<value>` and `of-y-<value>` for the x and y axises respectively.
+- Values:
+  - `hidden`
+  - `scroll`
+  - `visible`
+  - `auto`
+
+---
+
+## Rounded
+Use `rounded` class to get full roundness by 50% border-radius. 
+
+---
+
+## Radius Size
+- Use `br-<size>` class to get border-radius.
+- Sizes:
+  - `0`: 0
+  - `xs`: 1px
+  - `s`: 2px
+  - `base`: 4px
+  - `m`: 6px
+  - `l`: 8px
+  - `xl`: 10px
+  - `max`: 99rem
+
+```html_example
+<div class="row text-center">
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-50 br-0">br-0</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-100 br-xs">br-xs</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-200 br-s">br-s</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-300 br-base">br-base</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-400 br-m">br-m</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-500 br-l">br-l</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-600 br-xl">br-xl</div>
+  </div>
+  <div class="columns">
+    <div class="pt-base pb-base bg-blue-700 br-max">br-max</div>
+  </div>
+</div>
+```
+
+---
+
+## Margin
+- Use `m-auto` class to get auto margin on all edges.
+
+---
+
+## Font Size and Line Height
+- Use `lh-<size>` class to get line-height.
+- Use `fs-<size>` class to get font-size.
+- Sizes:
+  - `xs`: 0.512rem.
+  - `s`: 0.8rem.
+  - `base`: 1rem.
+  - `m`: 1.25rem.
+  - `l`: 1.5625rem.
+
+---
+
+## Link Underline
+- Use `underline` class on `a` tag to get a blue underline.
+- Use `<color>-under-line` class on `a` tag to get an underline that matches the selected color. 
+- The underline is achevied by using a bottom border with .6 opacity in normal state and 1 on hover state.
+
+---
+
+## Mouse Cursors
+- Use `cursor-<value>` class to get common mouse-cursor values.
+- Values:
+  - `none`
+  - `not-allowed`
+  - `pointer`
+  - `help`
+  - `wait`
+  - `crosshair`
+
+```html_example
+<div class="row text-center">
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-none">none</div>
+  </div>
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-not-allowed">not-allowed</div>
+  </div>
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-pointer">pointer</div>
+  </div>
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-help">help</div>
+  </div>
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-wait">wait</div>
+  </div>
+  <div class="columns">
+    <div class="p-base bg-gray-50 cursor-crosshair">crosshair</div>
+  </div>
+</div>
+```
 ---
 
 

@@ -81,16 +81,27 @@
     height: 100%;
     width: 100%;
     padding: $space-l $space; 
-    // padding: 0 $space;
     opacity: 0.0;
     -ms-transform: scale(0.85); /* IE 9 */
     -webkit-transform: scale(0.85); /* Safari */
     transform: scale(0.85);
     -webkit-transition: all 0.35s;
     transition: all 0.35s;
-    // .row {
-    //     height: 100%;
-    //   }
+  }
+
+  .control {
+    position: absolute;
+    width: 100%;
+    transition: opacity .35s;
+
+    &.bottom {
+      margin-top: -75%;
+      bottom: 0;
+    }
+
+    &.top {
+      top: 0;
+    }
   }
 }
 

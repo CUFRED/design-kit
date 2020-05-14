@@ -5,9 +5,89 @@
 .inline-block {
   display: inline-block !important;
 }
+.block {
+  display: block !important;
+}
 
 .row.max-width {
   max-width: $grid-width;
+}
+
+/**
+ * Utility classes for common position properties
+ */
+.p-a {
+  position: absolute !important;
+}
+.p-r {
+  position: relative !important;
+}
+.p-f {
+  position: fixed !important;
+}
+.relative-center {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/**
+ * Utility classes for common dimentions
+ */
+.full-width {
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+
+/**
+ * Utility classes for overflow common properties
+ */
+ $adk-overflow-props: 'hidden', 'scroll', 'visible', 'auto';
+ @each $prop in $adk-overflow-props {
+  .of-#{$prop} {
+    overflow: $prop !important;
+  }
+  .of-x-#{$prop} {
+    overflow-x: $prop !important;
+  }
+  .of-y-#{$prop} {
+    overflow-y: $prop !important;
+  }
+}
+
+/**
+ * Utility classes for gutter size
+ */
+@mixin adk-flex-grid-gutter($size, $value, $prefix: '') {
+  .column.#{$prefix}gutter-#{$size},
+  .columns.#{$prefix}gutter-#{$size},
+  .row.#{$prefix}gutter-#{$size} > .column,
+  .row.#{$prefix}gutter-#{$size} > .columns {
+    padding-left: $value;
+    padding-right: $value;
+  }
+}
+@mixin adk-xy-grid-gutter($size, $value, $prefix: '') {
+  .grid-padding-x.#{$prefix}gutter-#{$size} > .cell,
+  .grid-padding-x > .cell.#{$prefix}gutter-#{$size} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+}
+@each $size, $value in $sizes {
+  @include breakpoint(medium) {
+    @include adk-flex-grid-gutter($size, $value);
+    @include adk-xy-grid-gutter($size, $value);
+  }
+  @media (max-width: map-get($breakpoints, medium) - 1) {
+    @include adk-flex-grid-gutter($size, $value/$scale);
+    @include adk-xy-grid-gutter($size, $value/$scale);
+    @include adk-flex-grid-gutter($size, $value/$scale !important, 'small-');
+    @include adk-xy-grid-gutter($size, $value/$scale !important, 'small-');
+  }
 }
 
 // CSS Grid

@@ -376,3 +376,104 @@
     -webkit-transform: rotate(1turn);
   }
 }
+
+/**
+ * Utility classes for common React select usage
+ */
+$react-select-sizes: (
+  large: 42px,
+  x-large: 60px,
+);
+@each $name, $size in $react-select-sizes {
+  .Select.#{$name} {
+    .Select-input {
+      input {
+        padding: 0;
+      }
+    }
+    .Select-value, .Select-input {
+      height: $size;
+    }
+    .Select-input input, .Select-value-label, .Select-placeholder  {
+      line-height: $size;
+    }
+  }
+}
+
+$react-select-border-sizes: (
+  0: 0,
+  s: 2px,
+  m: 4px,
+  l: 10px,
+);
+@each $name, $size in $react-select-border-sizes {
+  .Select.rounded-#{$name} .Select-control {
+    border-radius: $size;
+  }
+}
+
+/**
+ * Reach Select override
+ */
+ // Keep input field on the same line as the options for multi select
+.Select > .Select-control > .Select-multi-value-wrapper > .Select-input {
+  display: inline-block;
+
+  input {
+    margin-left: 0;
+  }
+}
+
+// Highlight Select field without displaying the selected value
+.Select {
+  &.has-value {
+    &.highlight-on-select {
+      .Select-control {
+        background-color: $adk-blue;
+        border-color: darken($adk-blue, 7%);
+        .Select-loading {
+          border-color: rgba(255,255,255,.25);
+          border-right-color: white;
+        }
+        .Select-input {
+          > input {
+            color: white;
+          }
+        }
+      }
+      .Select-arrow {
+        border-color: white transparent transparent;
+      }
+      &.is-open {
+        > .Select-control {
+          .Select-arrow {
+            border-color: transparent transparent white;
+          }
+        }
+      }
+      &.is-focused {
+        .forced-placeholder {
+          opacity: .25;
+        }
+      }
+      .Select-value-label, .Select-clear {
+        color: white;
+      }
+    }
+  }
+  .highlight-on-select {
+    .Select-multi-value-wrapper {
+      .forced-placeholder:not(:first-child) {
+        display: none;
+      }
+    }
+    &.is-focused {
+      .forced-placeholder {
+        opacity: .25;
+      }
+    }
+  }
+  .forced-placeholder {
+    color: white;
+  }
+}

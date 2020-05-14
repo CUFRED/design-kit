@@ -5,9 +5,12 @@
 //   }
 // }
 
-// ADK Font Sizes
+// ADK Font Sizes and Line Heights
 @each $size, $value in $adk-font-sizes {
   &.fs-#{$size} {
+    font-size: $value;
+  }
+  &.lh-#{$size} {
     font-size: $value;
   }
 }
@@ -75,6 +78,7 @@ b {
   margin-bottom: 0;
 }
 
+// Links underlines
 a.underline,
 p > a {
   color: $black;
@@ -83,6 +87,17 @@ p > a {
   word-wrap: break-word;
   &:hover {
     border-bottom: 1px solid $adk-blue;
+  }
+}
+
+@each $name, $color in map-merge($adk-palette-colors, $adk-neutral-colors) {
+  a.#{$name}-underline {
+    text-decoration: none;
+    border-bottom: 1px solid rgba($color, 0.6);
+
+    &:hover {
+      border-bottom: 1px solid $color;
+    }
   }
 }
 

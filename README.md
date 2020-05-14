@@ -16,6 +16,9 @@ npm install
 npm start
 ```
 
+### Local Development
+You can access `adk.css` locally from http://localhost:8080/css/adk.css
+
 ### Documentation
 
 Edit [docs.md](docs.md) to update the documentation site.
