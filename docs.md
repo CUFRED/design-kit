@@ -1685,7 +1685,7 @@ Use `rounded` class to get full roundness by 50% border-radius.
 ```html_example
 <div class="row text-center">
   <div class="columns">
-    <div class="pt-base pb-base bg-blue-50 br-0">br-0</div>
+    <div class="pt-base pb-base bg-blue-50 br-0">br-0 </div>
   </div>
   <div class="columns">
     <div class="pt-base pb-base bg-blue-100 br-xs">br-xs</div>
