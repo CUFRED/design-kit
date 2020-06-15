@@ -477,3 +477,9 @@ $react-select-border-sizes: (
     color: white;
   }
 }
+
+.Select.three-rows-height-select {
+  .Select-multi-value-wrapper {
+    min-height: 98px;
+  }
+}
