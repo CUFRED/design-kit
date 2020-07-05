@@ -1771,6 +1771,14 @@ Use `rounded` class to get full roundness by 50% border-radius.
 ```
 ---
 
+## Disable Text Selection
+- Use `unselectable` class on any element to disable text selection.
+```html_example
+<p>Selectable Text</p>
+<p class="unselectable">UnSelectable Text</p>
+```
+
+---
 
 
 # Forms
