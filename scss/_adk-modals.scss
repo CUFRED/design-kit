@@ -24,6 +24,10 @@
   display: block;
 }
 
+.reveal-overlay {
+  overflow-y: auto;
+}
+
 .reveal, .revealProductMessage {
 
   .header, .footer {
@@ -84,12 +88,4 @@
 // Disable background scrolling when a React modal is active
 body.ReactModal__Body--open {
   overflow: hidden;
-}
-
-.ReactModalPortal {
-  .ReactModal__Overlay {
-    .ReactModal__Content {
-
-    }
-  }
 }
