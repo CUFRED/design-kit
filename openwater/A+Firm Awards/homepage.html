@@ -1,0 +1,134 @@
+<span class="adk">
+  <div class="text-center">
+    <h3 class="mb-base logged-in">Welcome<span id="firm-awards-fullname"></span>!</h3>
+
+    <div class="grid-x">
+      <div class="cell shrink m-auto bg-yellow-50 border-yellow-600 border br-base p-base">
+        <h4 class="yellow-900">
+          Hurry! <strong id="firm-awards-days">00</strong> days, <strong id="firm-awards-hours">00</strong> hours, <strong id="firm-awards-mins">00</strong> minutes, and <strong id="firm-awards-secs">00</strong> seconds
+          <br />left until the Early Entry Deadline on <strong id="firm-awards-early-deadline">October 9, 2020</strong>
+        </h4>
+      </div>
+    </div>
+
+    <span class="logged-out">
+      <h2 class="mt-l">Enter the 2020 A+Firm Awards</h2>
+      <p>To get started, log into the A+Firm Awards Entry Portal using your <strong>Architizer</strong> ID.</p>
+
+      <div>
+        <a class="button primary large" id="beginSso" onclick="redirect('/a/organizations/main/account/redirecttothirdpartycorporateauthprovider')">Log in through Architizer</a>
+      </div>
+      <div class="gray-200 mt-xxs">—— or ——</div>
+      <div class="mt-xs">
+        <a class="button secondary" id="beginRegisterSso" onclick="redirect('/a/organizations/main/account/redirecttothirdpartycorporateauthprovider')">Create a new account</a>
+      </div>
+      
+      <div class="grid-x mt-l">
+        <div class="cell small-12 large-8 m-auto">
+          <i class="gray">Note: We have updated our system and you can now use your Architizer login credentials to access your Awards account. You will now be redirected to Architizer to sign in or create an account.</i>
+        </div>
+      </div>
+    </span>
+
+    <span class="logged-in">
+      <h2 class="mt-l">Enter the 2020 A+Firm Awards</h2>
+      <a class="button primary large mt-l pl-xxxl pr-xxxl" href="/a/solicitations/1/home">Enter Now</a>
+      <div class="grid-x mt-l">
+        <div class="cell small-12 large-10 m-auto">
+          <p class="mb-0">The A+Firm Awards honors firms at every level and every region of the world.</p>
+          <p class="mb-0">The program is open to architecture firms, landscape architects, engineers, interior designers, rendering studios, photographers, and real estate developers.</p>
+          <p class="mb-0">32 Award categories offer opportunities for firms of all sizes, geographies and specializations.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="grid-x mt-l">
+      <h3 class="cell">Required Information</h3>
+      <div class="cell small-5 text-right pr-xs"><strong>Firm information</strong></div>
+      <div class="cell small-7 text-left">Brief description of your firm and mission</div>
+      <div class="cell small-5 text-right pr-xs"><strong>3-6 projects</strong></div>
+      <div class="cell small-7 text-left">Brief project descriptions and high resolution images</div>
+      <div class="cell small-5 text-right pr-xs"><strong>Payment method</strong></div>
+      <div class="cell small-7 text-left">Checkout with credit card or Paypal with fees starting at $345</div>
+      <div class="cell">
+        <i class="gray">Note: you may return to edit or add to your submission at any point before the entry deadline.</i>
+      </div>
+    </div>
+
+    <div class="grid-x mt-l">
+      <div class="cell small-12 large-8 m-auto">
+        <h3>Have questions or need assistance?</h3>
+        <p>We're here to help! Check out our <a href="https://firmawards.architizer.com/firm-awards-faq/" target="_blank">FAQs</a> or email your questions to customer service at <a href="mailto:firmawards@architizer.com" target="_blank">firmawards@architizer.com</a>. We are available Mon-Fri 9am-5.30pm ET and will respond within 24 hours.</p>
+      </div>
+    </div>
+
+
+  </div>
+</span>
+
+<script>
+  $(document).ready(function() {
+    var isLoggedinUser = function() {
+      return window.currentUser && window.currentUser.id;
+    }
+
+    var populateFullname = function () {
+      var fullname = window.currentUser.fullName;
+      if (fullname) {
+        $('#firm-awards-fullname').text(', ' + fullname);
+      }
+    }
+
+    var setRegistrationHref = function () {
+      var architizerDomain = 'architizer.com';
+      var owDomain = window.location ? window.location.origin : null;
+      var returnUrl = owDomain + '/a/organizations/main/account/validatethirdpartycorporateauthresult?redirectUrl=/';
+      var registrationHref = 'https://' + architizerDomain + '/register/?returnUrl=' + encodeURIComponent(returnUrl);
+      $('#beginRegisterSso').attr('href', registrationHref).attr('onclick', null);
+    }
+
+    var populateCountDown = function () {
+      var rawDueDate = $('#firm-awards-early-deadline').text();
+      var dueDate = moment(rawDueDate).set({
+        hour: 23,
+        minute: 59,
+        second: 59
+      });
+
+      if (!dueDate.isValid()) {
+        return;
+      }
+
+      var $days = $('#firm-awards-days');
+      var $hours = $('#firm-awards-hours');
+      var $mins = $('#firm-awards-mins');
+      var $secs = $('#firm-awards-secs');
+      
+      setInterval(function() {
+        var now = moment();
+        var diff = moment.duration(dueDate.diff(now));
+        var seconds = diff.seconds();
+        if (seconds > 0) {
+          $days.text(diff.days());
+          $hours.text(diff.hours());
+          $mins.text(diff.minutes());
+          $secs.text(diff.seconds());
+        }
+      }, 1000);
+    }
+
+    // Logged in
+    if (isLoggedinUser()) {
+      $('.logged-out').hide();
+      $('.logged-in').show();
+      populateFullname();
+    // Logged out
+    } else {
+      $('.logged-out').show();
+      $('.logged-in').hide();
+      setRegistrationHref();
+    }
+
+    populateCountDown();
+  });
+</script>
