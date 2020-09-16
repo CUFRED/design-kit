@@ -1,0 +1,731 @@
+// Architizer Design Kit variables
+@import 'adk-variables';
+// Foundation settings and components
+@import 'settings';
+@import 'foundation';
+// Architizer Design Kit resets
+@import 'adk-resets';
+
+
+
+
+// -----------------------------------------------
+// Override OpenWater Style
+// -----------------------------------------------
+body {
+  margin: 0;
+  padding: 0;
+  background: $extra-light-gray;
+  font-weight: $global-weight-light;
+  text-rendering: optimizelegibility;
+  line-height: 1.5;
+  color: $black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $body-font-family;
+}
+ul {
+  list-style-type: none;
+}
+a,
+p,
+span,
+li,
+td,
+div,
+label,
+blockquote,
+input,
+textarea,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $black;
+  font-family: $body-font-family;
+}
+strong {
+  font-weight: bold;
+}
+a {
+  line-height: inherit;
+	color: $adk-blue;
+	text-decoration: none;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    color: scale-color($adk-blue, $lightness: -15%);
+  }
+}
+img {
+  max-width: 100%;
+}
+.footer {
+  height: auto;
+  border: none;
+}
+#warp {
+  box-shadow: none;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: transparent !important;
+
+  .core {
+    max-width: 66.66667%;
+    min-height: calc(100vh - 45px - 215px);
+    background-color: $white;
+    margin: $space-l auto;
+    padding: $space;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    
+    .content-right {
+      width: 100%;
+    }
+    .content-left {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  
+    @include breakpoint(medium down) {
+      max-width: 100%;
+      margin: $space-s;
+    }
+  }
+}
+
+// Buttons
+.btn, button, input[type=submit], input[type=reset], input[type=button] {
+  background: $adk-blue;
+  padding: $space-xs $space-s;
+  border: none;
+  line-height: 1;
+  color: $white !important;
+  font-size: $space;
+  line-height: 1;
+  font-family: $body-font-family;
+  font-weight: normal;
+  text-transform: none;
+
+  &:hover, &:focus, &:active {
+    background: scale-color($adk-blue, $lightness: -15%);
+  }
+  &:disabled {
+    background: $adk-blue;
+    opacity: .25;
+    cursor: not-allowed;
+  }
+}
+.delete > button {
+  background: $adk-red;
+  color: white !important;
+}
+
+ul.breadcrumb {
+  margin: 0 0 1rem;
+  a {
+    color: $adk-gray;
+
+    &:hover {
+      color: $adk-blue;
+    }
+  }
+}
+#applicationJudgements > h3 {
+  font-size: $font-size-l;
+}
+
+// Tables
+.dataTables_wrapper {
+  .dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_processing,
+  .dataTables_paginate {
+    font-size: $font-size-s;
+    color: $medium-gray;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+table:not(.ui-datepicker-calendar) {
+  margin-bottom: $space-xs;
+  border-radius: 0;
+  border-collapse: collapse;
+  font-size: $font-size-s;
+
+  &.dataTable {
+    &.no-footer, thead th, thead td {
+      border: none;
+    }
+  }
+  thead, tbody, tfoot {
+    border: $adk-global-separator;
+  }
+  thead {
+    background: $extra-light-gray;
+    color: $black;
+  }
+  thead, tfoot {
+    tr {
+      background: transparent;
+    }
+    th, td {
+      padding: $space-xs $space-s $space-s;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  tbody {
+    tr {
+      th, td {
+        padding: $space-xs $space-s $space-s;
+      }
+
+      &:hover {
+        th, td {
+          background-color: lighten($extra-light-gray, 2%);
+        }
+      }
+      &:nth-child(odd) {
+        background-color: $white;
+      }
+      &:nth-child(even) {
+        border-bottom: 0;
+        background-color: darken($extra-light-gray, 1%);
+      }
+      td.action {
+        a.remove {
+          position: initial;
+        }
+      }
+    }
+  }
+}
+// -----------------------------------------------
+// Utilities
+// -----------------------------------------------
+.pull-right {
+  float: right;
+}
+.border {
+  border: 1px solid;
+}
+
+// -----------------------------------------------
+// Architizer Style
+// -----------------------------------------------
+// Header Navigation
+header {
+  > div {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: .7rem;
+    min-height: 3rem;
+
+    &.architizer {
+      background-color: $black;
+      nav > .nav-menu > ul > li > a {
+        color: $light-gray;
+      }
+    }
+    &.openwater {
+      background-color: darken($adk-gray, 14%);
+      nav > .nav-menu > ul > li > a {
+        color: lighten($adk-gray, 35%);
+      }
+    }
+    > .logo {
+      text-align: center;
+      margin-right: .21875rem;
+    }
+    nav {
+      flex: 1;
+      background-color: initial;
+  
+      .nav-menu {
+        border: none;
+        width: auto;
+        height: auto;
+  
+        ul {
+          text-align: left;
+          margin: 0;
+
+          > li {
+            position: relative;
+            z-index: 999;
+
+            > a {
+              padding: 0;
+              text-transform: none;
+              font-size: $font-size;
+              padding-left: $space-l;
+              display: inline-block;
+
+              &:hover, &:focus, &:active, &.active {
+                color: $white;
+              }
+              &.dropdown {
+                &:after {
+                  content: "▼";
+                  margin-left: $space-xxs;
+                  font-size: $font-size-xs;
+                }
+                &.toggled {
+                  &:after {
+                   content: "▲";
+                  }
+                }
+              }
+            }
+            > ul {
+              clip: auto;
+              height: auto;
+              margin: auto;
+              display: none !important;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              padding: $space 0 $space-xs;
+              width: auto;
+              z-index: 999;
+              background-color: darken($adk-gray, 14%);
+
+              > li {
+                > a {
+                  background: none;
+                  border: none;
+                  line-height: 1;
+                  width: auto;
+                  min-width: 200px;
+                  padding: $space-s $space;
+                  color: lighten($adk-gray, 35%);
+                }
+              }
+            }
+            &:hover, &:focus, > ul:hover {
+              > ul {
+                display: block !important;
+                border: 0;
+                clip: auto;
+                height: auto;
+                overflow: auto;
+                width: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+    // Menu on mobile
+    .mobile_nav {
+      display: none;
+      border: none;
+      background-image: none;
+      font-size: 1.125rem;
+      line-height: 0;
+      color: transparent;
+      top: 25px;
+      right: 15px;
+      width: 30px;
+      height: 2px;
+      background-color: $white;
+      position: absolute;
+      transition: transform .25s, top .25s, background-color .25s;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background-color: $white;
+        transition: transform .25s, top .25s;
+      }
+      &:before {
+        top: -10px;
+      }
+      &:after {
+        top: 10px;
+      }
+
+      &.toggled {
+        background-color: transparent;
+        background-image: none;
+        border: 0;
+
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+        &:after {
+          top: 0;
+          transform: rotate(135deg);
+        }
+      }
+    }
+    @include breakpoint(medium down) {
+      -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
+
+      > .logo {
+        width: 80%;
+        margin: auto;
+      }
+      nav div.nav-menu {
+        display: block;
+        > ul {
+          display: none;
+
+          > li {
+            float: none;
+            border: none;
+            display: block;
+
+            > a {
+              padding: $space-s 0;
+            }
+            &:hover, &:focus, > ul:hover {
+              > ul {
+                display: none !important;
+              }
+            }
+            > ul {
+              position: initial;
+              padding: $space 0 0;
+              display: none !important;
+              background-color: darken($adk-gray, 7%);
+
+              &.toggled {
+                display: block !important;
+              }
+              > li {
+                display: block;
+                border: none;
+
+                > a {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+      .mobile_nav {
+        display: block;
+      }
+    }
+    @include breakpoint(large) {
+      nav div.nav-menu > ul {
+        display: block !important;
+      }
+    }
+  }
+
+}
+
+// Forms
+.submit-entry {
+  > div > div h3 {
+    font-size: $font-size-l;
+  }
+}
+
+form {
+  .fields {
+    border-top: none;
+  }
+  fieldset {
+    section {
+      &.separator > label.name {
+        color: $black;
+      }
+      > label {
+        margin: 0;
+        font-size: $font-size-s;
+        font-weight: 400;
+        line-height: 1.8;
+        color: $adk-quicksilver;
+        
+        span.required {
+          margin-top: 9px;
+        }  
+      }
+      > div.view {
+        > span.details {
+          > p {
+            font-size: $font-size-s;
+            color: $adk-gray;
+          }
+        }
+        > .title {
+          font-size: $font-size-s;
+          font-weight: normal !important;
+          color: lighten($adk-quicksilver, 7%);
+        }
+        span.description > p {
+          font-size: $font-size-s;
+          color: $adk-gray;
+        }
+
+        .preview {
+          .previewBox {
+            > div > span {
+              font-size: $font-size-s;
+              color: $adk-gray;
+              font-style: italic;
+            }
+          }
+        }
+        
+        .resetRadioListSelectedValues {
+          font-size: $font-size;
+          color: $adk-gray;
+
+          a {
+            color: $adk-gray;
+          }
+        }
+        
+        // Override Openwater style
+        input.large, textarea {
+          width: 100%;
+        }
+        textarea.large {
+          height: 400px;
+        }
+        .lengthCounter {
+          > label {
+            display: inline;
+            font-size: $font-size-s;
+            color: $adk-gray;
+          }
+        }
+        .fileUpload {
+          margin: 0 0 $space !important;
+          .preview .delete {
+            button {
+              height: auto;
+              width: auto !important;
+              padding: .25rem .6rem;
+            }
+            span.ui-icon {
+              position: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  [type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month],
+  [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url],
+  [type=week], textarea, select {
+    height: 2.4375rem;
+    padding: $space-xs;
+    margin: 0 0 $space !important;
+    border: 1px solid $adk-gunmetal;
+    border-radius: $card-border-radius;
+    background-color: $white;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: $font-size;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $black;
+    transition: border-color .25s ease-in-out;
+
+    &:hover {
+      border: 1px solid $adk-quicksilver;
+    }
+    &:focus {
+      border: 1px solid $adk-blue;
+      background-color: transparent;
+      outline: 0;
+      border: 1px solid $adk-blue;
+      background-color: $white;
+      box-shadow: none;
+    }
+  }
+  .cke, .view > .controls {
+    margin-bottom: $space;
+  }
+  section.checkboxList, section.radioList {
+    div.view {
+      padding: 0 0 $space;
+      div.listItem > label {
+        input[type=checkbox], input[type=radio] {
+          margin: 0;
+          vertical-align: middle;
+    
+          + span {
+            cursor: pointer;
+            color: $black;
+            font-size: $font-size;
+            display: inline-block;
+            vertical-align: baseline;
+            margin-left: $space-xxxs;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%2841, 41, 41%29'></polygon></svg>");
+    background-origin: content-box;
+    background-position: right -1rem center;
+    background-repeat: no-repeat;
+    background-size: 9px 6px;
+    padding-right: $space-l;
+  }
+}
+
+
+// Header Banner
+.firm-awards-banner {
+  height: 325px;
+  background: url('https://architizer-prod.imgix.net/media/051216_JBascom_4689A0366-scaled.jpg?auto=format,compress&q=60&h=600&w=2000&fit=crop&fp-y=.275&blend-alpha=45&blend-color=000000&blend-mode=normal');
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+
+  .architizer-logo {
+    img {
+      @include breakpoint(small) {
+        width: 75%;
+      }
+      @include breakpoint(medium) {
+        width: 50%;
+      }
+      @include breakpoint(large) {
+        width: 20%;
+      }
+    }
+  }
+  .firm-awards-logo {
+    img {
+      @include breakpoint(small) {
+        width: 90%;
+      }
+      @include breakpoint(medium) {
+        width: 65%;
+      }
+      @include breakpoint(large) {
+        width: 35%;
+      }
+    }
+  }
+  h1 {
+    @include breakpoint(small) {
+      font-size: $space;
+    }
+    @include breakpoint(medium) {
+      font-size: $space-l;
+    }
+    @include breakpoint(large) {
+      font-size: $space-xl;
+    }
+  }
+}
+
+// -----------------------------------------------
+// Override Page Style
+// -----------------------------------------------
+#shoppingCart {
+  > p {
+    font-size: $font-size-s;
+    color: $adk-gray;
+  }
+  .totalAmount {
+    font-weight: bold;
+  }
+  .apply, .applyInvoiceChangesSection {
+    margin-bottom: $space;
+  }
+}
+.paymentForm {
+  .totalAmountDueSection {
+    font-weight: bold;
+  }
+  .controlSection {
+    margin-top: $space;
+  }
+  form {
+    input, select {
+      margin: 0 !important;
+    }
+    select {
+      height: 2.4375rem;
+    }
+  }
+  .duplicateChargesWarning {
+    margin-top: $space;
+  }
+}
+
+.swal-overlay {
+  .swal-modal {
+    .swal-icon {
+      padding: 0;
+      box-sizing: content-box;
+      margin: 20px auto;
+      .swal-icon--warning__body {
+        margin-left: -2px;
+        .swal-icon--warning__dot {
+          margin-left: -4px;
+        }
+      }
+    }
+    .swal-content {
+      padding: 0 20px;
+      margin-top: 20px;
+      font-size: medium;
+      .swal-title {
+        font-size: 15px;
+        line-height: 24px;
+        word-wrap: break-word;
+      }
+    }
+    .swal-footer {
+      text-align: right;
+      padding-top: 13px;
+      margin-top: 13px;
+      padding: 13px 16px;
+      .swal-button-container {
+        margin: 5px;
+        button.swal-button {
+          padding: $space-xs;
+          line-height: 1 !important;
+        }
+      }
+    }
+  }
+}
+
+.warningPanel {
+  margin: 0 0 $space;
+  padding: $space;
+  border-radius: $card-border-radius;
+  
+  &.bg_red {
+    font-size: $font-size;
+    background: lighten($adk-red, 28%);
+    border: 1px solid lighten($adk-red, 7%);
+  }
+}

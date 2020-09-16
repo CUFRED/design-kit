@@ -13,6 +13,7 @@ jobs:
           command: |
             npm install
             gulp sass
+            gulp openwaterSass
             gulp docs
             gulp createAdkTemplatesList
       - run: sudo apt-get install awscli -y

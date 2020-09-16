@@ -9,6 +9,7 @@ if [ "$CIRCLE_BRANCH" = "master" ]; then
 
   # Master Builds
   aws s3 cp css/adk.css s3://design-kit.arc.ht/css/adk.css
+  aws s3 cp css/ow.css s3://design-kit.arc.ht/css/ow.css
   aws s3 sync js s3://design-kit.arc.ht/js/ --delete
   aws s3 sync fonts s3://design-kit.arc.ht/fonts/ --delete
   aws s3 sync assets s3://design-kit.arc.ht/assets/ --delete
