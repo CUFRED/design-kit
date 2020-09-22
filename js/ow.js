@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
   var useArchitizerStyle = function () {
     $('html').addClass('adk-ow');
   }
@@ -39,18 +39,22 @@ $(document).ready(function() {
     $myAccount.detach();
   }
 
-  var markNavItemsWithSubMenus = function() {
-    var $navList = $('nav#site-navigation > .nav-menu > ul');
-    var $itemsWithSubMenu = $navList.find('li:has(ul)');
-    $itemsWithSubMenu.each(function (i, item) {
-      $(item).find(' > a').addClass('dropdown').append('<span class="caret">▼</span>');
-      $(item).off().click(function (e) {
-        // Handle tablet only, mobile in handled in responsive.js
-        if ($(window).width() >= 768 && $(window).width() < 1023) {
-          e.preventDefault();
-          $(item).find(' > ul').slideToggle();
-        }
-      });
+  var handleMobileMenu = function() {
+    $('.mobile_nav').on('click', function() {
+      $(this).toggleClass('toggled');
+      $('.nav-menu > ul').slideToggle();
+    });
+  }
+
+  var handleSubMenus = function() {
+    $('.nav-menu li').each(function() {
+      var dropdownLink = $(this).find('ul').first().siblings('a');
+      if (dropdownLink.length) {
+        dropdownLink.addClass('dropdown');
+        $(this).off().on('click', function() {
+          dropdownLink.toggleClass('toggled').siblings('ul').toggleClass('toggled');
+        });
+      }
     });
   };
 
@@ -73,7 +77,8 @@ $(document).ready(function() {
 
   useArchitizerStyle();
   spreadMyAccountMenu();
-  markNavItemsWithSubMenus();
+  handleMobileMenu();
+  handleSubMenus();
   populateArchitizerUsername();
   setTimeout(replaceFormBreadcrumbIcons);
 });

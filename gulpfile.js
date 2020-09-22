@@ -52,7 +52,9 @@ function sass() {
 
 function openwaterSass() {
   return gulp.src('scss/ow.scss')
-    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.sass({
+      includePaths: sassPaths
+    }).on('error', $.sass.logError))
     // Wrap all CSS in .ow-adk class to be scopable
     .pipe($.cssWrap({
       selector: '.adk-ow',
