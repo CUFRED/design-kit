@@ -100,12 +100,16 @@ img {
     @include breakpoint(medium down) {
       max-width: 100%;
       margin: $space-s;
+      padding: $space-s;
     }
   }
 }
 
 // Buttons
 .btn, button, input[type=submit], input[type=reset], input[type=button] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: $adk-blue;
   padding: $space-xs $space-s;
   border: none;
@@ -133,11 +137,17 @@ img {
 
 ul.breadcrumb {
   margin: 0 0 1rem;
-  a {
-    color: $adk-gray;
+  > li {
+    &:last-child::after {
+      content: ' > ';
+      color: transparent;
+    }
+    a {
+      color: $adk-gray;
 
-    &:hover {
-      color: $adk-blue;
+      &:hover {
+        color: $adk-blue;
+      }
     }
   }
 }
@@ -531,6 +541,9 @@ form {
   [type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month],
   [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url],
   [type=week], textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     height: 2.4375rem;
     padding: $space-xs;
     margin: 0 0 $space !important;
@@ -555,6 +568,11 @@ form {
       border: 1px solid $adk-blue;
       background-color: $white;
       box-shadow: none;
+    }
+  }
+  [type=file] {
+    @include breakpoint(medium down) {
+      width: 100%;
     }
   }
   .cke, .view > .controls {
